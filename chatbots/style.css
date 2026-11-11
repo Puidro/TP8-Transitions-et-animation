@@ -1,0 +1,148 @@
+* { box-sizing: border-box; }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f6f9;
+    color: #222;
+    /* Mise en page en grille : 1 colonne sur mobile */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "entete" "historique" "main" "aside" "footer";
+    gap: 20px;
+    padding: 15px;
+}
+.entete     { grid-area: entete; }
+.historique { grid-area: historique; }
+main        { grid-area: main; }
+aside       { grid-area: aside; overflow-x: auto; }
+footer      { grid-area: footer; text-align: center; }
+
+/* Ordinateur : historique à gauche, contenu à droite */
+@media (min-width: 800px) {
+    body {
+        grid-template-columns: 250px 1fr;
+        grid-template-areas:
+            "entete     entete"
+            "historique main"
+            "historique aside"
+            "footer     footer";
+    }
+}
+
+/* ---- En-tête ---- */
+.entete {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #2E75B6;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+.entete h1 { margin: 0; font-size: 24px; }
+.avatar { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; }
+.statut { margin: 4px 0 0; }
+
+/* 5. Point vert qui pulse devant « En ligne » */
+.statut::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 6px;
+    background: #2ECC71;
+    border-radius: 50%;
+    animation: pulse-point 1s ease-in-out infinite alternate;
+}
+@keyframes pulse-point {
+    from { transform: scale(1);   opacity: 1; }
+    to   { transform: scale(1.4); opacity: 0.6; }
+}
+
+/* ---- Historique ---- */
+.historique, main section, aside {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+main { display: grid; gap: 20px; }
+.historique ul { list-style: none; padding: 0; margin: 0; }
+.historique a {
+    display: block;
+    padding: 8px 10px;
+    color: #2E75B6;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.historique a:hover { background-color: #2E75B6; color: white; }
+
+/* ---- Messages ---- */
+.messages { display: grid; gap: 10px; margin-bottom: 15px; }
+.bulle { margin: 0; padding: 10px 14px; border-radius: 14px; max-width: 85%; }
+.user { background: #DCEBFA; justify-self: end; }
+.bot  { background: #EEE;    justify-self: start; }
+
+/* 1. Apparition : fondu + montée de 10px */
+.message { animation: apparition 0.3s ease-out; }
+@keyframes apparition {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* 2. Indicateur « en train d'écrire » */
+.ecrit { display: flex; gap: 5px; }
+.ecrit span {
+    width: 8px;
+    height: 8px;
+    background: #888;
+    border-radius: 50%;
+    animation: monter 1s ease-in-out infinite;
+}
+.ecrit span:nth-child(2) { animation-delay: 0.15s; }
+.ecrit span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes monter {
+    0%, 60%, 100% { transform: translateY(0); }
+    30%           { transform: translateY(-6px); }
+}
+
+/* ---- Formulaires ---- */
+form { display: grid; gap: 8px; margin-bottom: 15px; }
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-family: inherit;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+/* 4. Focus : bordure et ombre bleues */
+textarea:focus {
+    outline: none;
+    border-color: #2E75B6;
+    box-shadow: 0 0 6px rgba(46, 117, 182, 0.5);
+}
+button {
+    padding: 10px 18px;
+    background: #2E75B6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    justify-self: start;
+    transition: background-color 0.3s, transform 0.2s;
+}
+button:hover  { background-color: #1F3864; }
+button:active { transform: scale(0.95); }
+.note { display: flex; gap: 15px; }
+
+/* ---- Tableau ---- */
+table { border-collapse: collapse; width: 100%; min-width: 300px; }
+caption { font-weight: bold; margin-bottom: 8px; }
+th, td { padding: 8px; text-align: left; border: 1px solid #ccc; }
+th { background: #2E75B6; color: white; }
+
+/* 6. Réduction des animations : l'interface reste utilisable */
+@media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+}

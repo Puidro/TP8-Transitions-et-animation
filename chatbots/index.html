@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Présentation de Lionel Messi, sa carrière, ses qualités et ses principaux succès.">
+    <link rel="stylesheet" href="style.css">
+    <title>Lionel Messi - Présentation et carrière</title>
+</head>
+
+<body>
+
+    <header class="entete">
+        <img src="messi.jpg" alt="Portrait de Lionel Messi" class="avatar">
+        <div class="identite">
+            <h1>Lionel Messi</h1>
+            <p class="statut">En ligne</p>
+        </div>
+    </header>
+
+    <nav class="historique">
+        <h2>Historique</h2>
+        <ul>
+            <li><a href="#">Ma carrière</a></li>
+            <li><a href="#">Mes débuts à Barcelone</a></li>
+            <li><a href="#">La Coupe du Monde 2022</a></li>
+            <li><a href="#">Mes trophées</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Présentation</h2>
+            <p class="description">Lionel Messi est un célèbre joueur de football argentin.</p>
+        </section>
+
+        <section>
+            <h2>Ses qualités</h2>
+            <ul class="capacites">
+                <li>Excellent dribbleur</li>
+                <li>Très bon buteur</li>
+                <li>Grande vision du jeu</li>
+                <li>Nombreux trophées remportés</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Conversation</h2>
+
+            <div class="messages">
+                <p class="bulle message user"><strong>Utilisateur :</strong> Bonjour Messi, peux-tu me parler de ta carrière ?</p>
+                <p class="bulle message bot"><strong>Messi :</strong> Bonjour ! Bien sûr, j'ai commencé ma carrière très jeune et j'ai joué dans plusieurs grandes équipes.</p>
+                <p class="bulle message user"><strong>Utilisateur :</strong> Quelle équipe as-tu rejoint quand tu étais jeune ?</p>
+                <p class="bulle message bot"><strong>Messi :</strong> J'ai rejoint le FC Barcelone à un jeune âge et j'ai passé de nombreuses années dans ce club.</p>
+                <p class="bulle message user"><strong>Utilisateur :</strong> Quel est ton plus grand succès avec l'Argentine ?</p>
+                <p class="bulle message bot"><strong>Messi :</strong> Mon plus grand succès avec l'Argentine est d'avoir remporté la Coupe du Monde 2022.</p>
+
+                <!-- Indicateur « en train d'écrire » -->
+                <div class="bulle message bot ecrit"><span></span><span></span><span></span></div>
+            </div>
+
+            <form class="formulaire-message">
+                <label for="msg">Votre message</label>
+                <textarea name="message" id="msg" rows="2" required placeholder="Écrire ici..."></textarea>
+                <button type="submit">Envoyer</button>
+            </form>
+
+            <form class="formulaire-avis">
+                <p>Votre avis :</p>
+                <div class="note">
+                    <label><input type="radio" name="avis" value="1" checked> 1</label>
+                    <label><input type="radio" name="avis" value="2"> 2</label>
+                    <label><input type="radio" name="avis" value="3"> 3</label>
+                    <label><input type="radio" name="avis" value="4"> 4</label>
+                </div>
+
+                <label for="commentaire">Un commentaire ?</label><br>
+                <textarea name="commentaire" id="commentaire" rows="4" cols="30" placeholder="Écrire ici..."></textarea>
+                <br><br>
+                <button type="submit">Envoyer mon commentaire</button>
+            </form>
+        </section>
+    </main>
+
+    <aside>
+        <table border="1">
+            <caption>Questions fréquentes</caption>
+            <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Réponse</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Quel est le pays de Messi ?</td>
+                    <td>Il est argentin.</td>
+                </tr>
+                <tr>
+                    <td>Quel est son poste ?</td>
+                    <td>Attaquant.</td>
+                </tr>
+                <tr>
+                    <td>Dans quel club a-t-il joué jeune ?</td>
+                    <td>Le FC Barcelone.</td>
+                </tr>
+                <tr>
+                    <td>Quel grand titre a-t-il remporté avec l'Argentine ?</td>
+                    <td>La Coupe du Monde 2022.</td>
+                </tr>
+            </tbody>
+        </table>
+    </aside>
+
+    <footer>
+        <p>Un des plus grands joueurs de l'histoire du football.</p>
+    </footer>
+
+</body>
+</html>

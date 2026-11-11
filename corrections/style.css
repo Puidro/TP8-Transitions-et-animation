@@ -1,0 +1,47 @@
+/* 1. Le bouton change de couleur en douceur, à l'aller et au retour */
+/* ERREUR : la transition était dans :hover, donc seulement à l'aller.
+   CORRECTION : on la met sur l'état normal (.bouton). */
+.bouton { background-color: #2E75B6; transition: background-color 0.3s; }
+.bouton:hover { background-color: #1F3864; }
+
+/* 2. Le sous-menu apparaît en fondu au survol du menu */
+/* ERREUR : la propriété display ne peut pas être animée.
+   CORRECTION : on utilise opacity + visibility. */
+.sous-menu { opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; }
+.menu:hover .sous-menu { opacity: 1; visibility: visible; }
+
+/* 3. Au survol, l'icône s'agrandit ET tourne */
+/* ERREUR : la 2e déclaration transform écrase la 1re.
+   CORRECTION : une seule propriété transform avec les deux fonctions. */
+.icone { transition: transform 0.3s; }
+.icone:hover { transform: scale(1.2) rotate(15deg); }
+
+/* 4. La carte apparaît en fondu au chargement */
+/* ERREUR : le nom de l'animation (apparaitre) ne correspond pas au @keyframes (apparition).
+   CORRECTION : même nom des deux côtés. */
+@keyframes apparition { from { opacity: 0; } to { opacity: 1; } }
+.carte { animation: apparition 0.5s ease-out; }
+
+/* 5. Le cercle de chargement tourne sans fin */
+/* ERREUR : aucune durée : sans durée, l'animation dure 0s et ne se voit pas.
+   CORRECTION : on ajoute une durée (1s). */
+@keyframes tourner { to { transform: rotate(360deg); } }
+.cercle { animation: tourner 1s linear infinite; }
+
+/* 6. L'aiguille fait un tour complet */
+/* ERREUR : rotate(360) n'a pas d'unité, la valeur est invalide.
+   CORRECTION : rotate(360deg). */
+@keyframes tour { to { transform: rotate(360deg); } }
+.aiguille { animation: tour 2s linear infinite; }
+
+
+/* ===== Styles de présentation pour tester (grille responsive) ===== */
+body { font-family: Arial, sans-serif; padding: 20px; }
+.test-grille { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+.test-grille > div { background: #f4f6f9; padding: 15px; border-radius: 8px; }
+.bouton { color: white; border: none; padding: 10px 18px; border-radius: 6px; cursor: pointer; }
+.sous-menu { background: #2E75B6; color: white; padding: 8px; margin-top: 5px; }
+.icone { display: inline-block; font-size: 40px; color: #F1C40F; }
+.carte { background: white; padding: 15px; border-radius: 6px; }
+.cercle { width: 40px; height: 40px; border: 4px solid #ddd; border-top-color: #2E75B6; border-radius: 50%; }
+.aiguille { width: 4px; height: 50px; background: #E74C3C; margin: 10px auto; }

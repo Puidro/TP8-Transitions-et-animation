@@ -1,0 +1,88 @@
+* { box-sizing: border-box; }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0 20px 20px;
+    display: grid;
+    justify-items: center;
+    gap: 25px;
+}
+
+/* 1. Alerte : glisse depuis le haut */
+.alerte {
+    width: calc(100% + 40px);
+    margin: 0 -20px;
+    background: #2E75B6;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    animation: glisser 0.5s ease-out;
+}
+@keyframes glisser {
+    from { transform: translateY(-100%); }
+    to   { transform: translateY(0); }
+}
+
+/* 2. Chargement : cercle qui tourne */
+.chargement {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #ddd;
+    border-top-color: #2E75B6;
+    border-radius: 50%;
+    animation: tourner 0.8s linear infinite;
+}
+@keyframes tourner { to { transform: rotate(360deg); } }
+
+/* 3. « En train d'écrire » */
+.ecrit { display: flex; gap: 6px; }
+.ecrit span {
+    width: 8px;
+    height: 8px;
+    background: #888;
+    border-radius: 50%;
+    animation: monter 1s ease-in-out infinite;
+}
+.ecrit span:nth-child(2) { animation-delay: 0.15s; }
+.ecrit span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes monter {
+    0%, 60%, 100% { transform: translateY(0); }
+    30%           { transform: translateY(-8px); }
+}
+
+/* 4. Liste en fondu, l'un après l'autre */
+.liste { list-style: none; padding: 0; margin: 0; }
+.liste li {
+    opacity: 0;
+    padding: 6px 0;
+    animation: fondu 0.5s ease-out forwards;
+}
+.liste li:nth-child(1) { animation-delay: 0s; }
+.liste li:nth-child(2) { animation-delay: 0.15s; }
+.liste li:nth-child(3) { animation-delay: 0.3s; }
+.liste li:nth-child(4) { animation-delay: 0.45s; }
+@keyframes fondu { to { opacity: 1; } }
+
+/* 5. Notification qui pulse */
+.notification {
+    width: 36px;
+    height: 36px;
+    margin: 0;
+    background: #E74C3C;
+    color: white;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-weight: bold;
+    animation: pulse 0.7s ease-in-out infinite alternate;
+}
+@keyframes pulse {
+    from { transform: scale(1); }
+    to   { transform: scale(1.15); }
+}
+
+/* 6. Réduction des animations */
+@media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+    .liste li { opacity: 1; }
+}
